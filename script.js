@@ -101,4 +101,40 @@ function popup(popup_name)
   }
 }
 
+function popup1(popup_name)
+{
+  get_popup=document.getElementById(popup_name);
+  conte = document.getElementById("pc-popup1")
+  if(get_popup.style.display=="flex")
+  {
+    get_popup.style.display="none";
+    //conte.style.display="flex";
+   
+  }
+  else
+  {
+    get_popup.style.display="flex";
+    
+    conte.style.display="none";
+  }
+}
+
+function popup2(popup_name)
+{
+  get_popup=document.getElementById(popup_name);
+  conte = document.getElementById("pc-popup")
+  if(get_popup.style.display=="flex")
+  {
+    get_popup.style.display="none";
+    //conte.style.display="flex";
+   
+  }
+  else
+  {
+    get_popup.style.display="flex";
+    
+    conte.style.display="none";
+  }
+}
+
 
