@@ -8,7 +8,7 @@
 
 .nav {
     width: 100%;
-    height: 30px;
+    height: 40px;
     background-color: black;
     color: white;
     display: flex;
@@ -19,13 +19,13 @@
     
     
 }
-.nav h1{
+/* .nav h1{
     font-size: 100;
     color: white;
     right: 0%;
     
     
-}
+} */
 .logout{
     width: 10%;
     text-align: center;
@@ -55,7 +55,7 @@
 
     width: 100%;
     height: 100vh;
-    background-color: #E3F2FD;
+    background-color: white;
     /* background-color:black; */
     display: flex;
     justify-content: right;
@@ -68,17 +68,21 @@ i {
     color: black;
 }
 
+
 .form-box {
     width: 90%;
     max-width: 450px;
     min-width: 350px;
-    background: #5d8377;
+    background: black;
     padding: 55px;
+    display: flex;
+    flex-direction: column;
     text-align: center;
     border-radius: 10px;
     margin-top: 2%;
     margin-bottom: 3%;
     margin-right: 3%;
+    color: white;
 
 }
 .form-box1{
@@ -89,7 +93,8 @@ i {
         width: 90%;
         max-width: 450px;
         min-width: 350px;
-        background: #5d8377;
+        background: black;
+        color: white;
         padding: 55px;
         display: flex;
         flex-direction: column;
@@ -114,23 +119,43 @@ i {
     font-size: 30px;
 }
 
-.form-box .underline {
+ .form-box .underline {
     width: 30px;
     height: 4px;
-    background: black;
+    background: white;
     margin: 10px auto 50px auto;
     border-radius: 13px;
 }
 .form-box1 .underline {
     width: 30px;
     height: 4px;
-    background: black;
+    background: white;
     margin: 10px auto 50px auto;
     border-radius: 13px;
-    margin-bottom: 3px;
 }
 
-.input-field {
+.form-box form{
+    display: flex;
+    flex-direction: column;
+}
+.form-box1 form{
+    display: flex;
+    flex-direction: column;
+}
+.form-box .input-field {
+    width: 100%;
+    background: #eaeaea;
+    margin: 15px 0;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+
+    max-height: 60px;
+    transition: max-height 0.4s;
+    overflow: hidden;
+}
+.form-box1 .input-field {
+    width: 100%;
     background: #eaeaea;
     margin: 15px 0;
     border-radius: 10px;
@@ -174,8 +199,8 @@ form p {
     flex-basis: 48%;
     height: 30px;
     border-radius: 12px;
-    background: black;
-    color: white;
+    background: white;
+    color: black;
 
     border: 0;
     outline: 0;
@@ -194,6 +219,8 @@ form p {
     border-radius: 12px;
     margin-left: 85px;
     margin-bottom: 30px;
+    font-size: 20px;
+    font-weight: 1000;
 
 
 }
@@ -201,7 +228,7 @@ form p {
 .btn-field a {
     text-decoration: none;
     font-weight: 900;
-    color: black;
+    color:white;
 }
 
 /*  */
@@ -211,12 +238,13 @@ form p {
     flex-basis: 48%;
     height: 30px;
     border-radius: 12px;
-    background: black;
-    color: white;
+    background:white;
+    color: black;
     border: 0;
     outline: 0;
     cursor: pointer;
     transition: background 1s;
+    
 
 }
 
@@ -225,8 +253,8 @@ form p {
 
 
     width: 50%;
-    background: black;
-    color: white;
+    background: white;
+    color: black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -237,6 +265,8 @@ form p {
     margin-top: 20px;
     margin-left: 85px;
     cursor: pointer;
+    font-size: 20px;
+    font-weight: 1000;
 
 
 
@@ -247,8 +277,8 @@ form p {
 
 
     width: 50%;
-    background: black;
-    color: white;
+    background: white;
+    color: black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -259,6 +289,8 @@ form p {
     margin-top: 20px;
     margin-left: 85px;
     cursor: pointer;
+    font-size: 20px;
+    font-weight: 1000;
 
 
 
@@ -272,6 +304,7 @@ form p {
 
 .google-signup i {
     font-size: 30px;
+    color: white;
 }
 
 .google-signup button {
@@ -295,21 +328,34 @@ form p {
  .input-group2{
     margin-top:0px;
 }
-.cross-btn {
-    margin-top: px;
+.form-box1 .cross-btn{
+    margin-top: 0.5rem;
+}
+ .cross-btnn {
+    margin-top: .1rem;
     background:transparent ;
     border: 0;
     outline: 0;
     cursor: pointer;
-    font-size: 30px;
-    margin-left: 150px;
     
+    margin-left: 16px;
+   
     
     
     
 }
+.cross-btnn i{
+    color: white;
+    margin-top: 0rem;
+    font-size: 30px;
+    background: transparent;
+    
+}
+.form-box .title{
+    margin-top: 1.5rem;
+}
 .form-box1 .title{
-    margin-top: 0px;
+    margin-top: .2rem;
 }
 .labroom{
     width: 100%;
@@ -341,7 +387,11 @@ form p {
     transition: none;
 }
 .main-container{
-    display: none;
+    /* display: none; */
+    margin-top: 8rem;
+    margin-left: 15rem;
+    margin-right: 5rem;
+    margin-bottom: 5rem;
     
 }
 .pc-container{
@@ -368,7 +418,7 @@ form p {
     font-weight: 1500;
     border:2px solid black;
     align-items: center;
-    margin-left: 370px;
+    margin-left: 300px;
 }
 .pc-container .main-div{
     display: inline-block;
@@ -442,4 +492,242 @@ form p {
 }
 .btnc i{
     color: red;
+    
 }
+.section
+{
+    height: 50px;
+    width: 100%;
+    /* background: black; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 7rem;
+}
+.section h2{
+    font-size: 80px;
+    font-weight: 1000px;
+}
+.selection-frm{
+    width: 50%;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+    
+}
+form{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.labslct {
+    /* width: 80%; */
+    height: 60px;
+    width: 80%;
+    background: white;
+    border-radius: 10px;
+    padding: 0.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    font-size: 30px;
+    font-weight: 1000px;
+    margin-top: 2rem;
+    
+    
+  }
+  .showbtn{
+    height: 40px;
+    width: 20%;
+    background: black;
+    border-radius: 10px;
+    color: white;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    margin-top: 2.5rem;
+    margin-left: 2rem;
+    font-size: 20px;
+    font-weight: 1000px;
+  }
+
+  .problem-form form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 300px;
+    margin-left: 30%;
+    
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+  }
+  .main-prf{
+    display: none;
+  /* position: fixed; */
+  /* width: 400px; */
+  margin-top: 11rem;
+  left: 3%;
+  
+  background: none;
+  width: 100%;
+  height: 600px;
+  border-radius: 10px;
+  position: absolute;
+ 
+  
+  }
+  .problem-form{
+    
+    
+    width: 30%;
+    height: 600px;
+    margin-top: 200px;
+    margin-left:300px ;
+    border: 5px solid black;
+    border-radius: 10px;
+    margin-left: 30%;
+    margin-bottom: 20%;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    background: white;
+    /* z-index: 9999; */
+    
+  }
+  .problem-form h1{
+    text-align: center;
+    text-decoration: wavy;
+    margin-top: 0.5rem;
+  }
+  .slct-lab{
+    
+    
+    width: 100%;
+    height: 20px;
+    font-weight: 100;
+  }
+  .slct-lab .lab_id{
+    width: 150%;
+    margin-right: 2rem;
+    font-weight: 1000;
+    
+  }
+  .slct-lab select{
+    width: 100%;
+    border: 2px solid black;
+    
+  }
+  .pc-number{
+    margin-top: 2.5rem;
+    font-weight: 1000;
+    
+  }
+  .pc-number input{ 
+    
+    border: 2px solid black;
+    
+  }
+  .prblm-type{
+    margin-top: 1rem;
+    font-weight: 1000;
+  }
+  .prblm-type select{
+    border: 2px solid black;
+  }
+  .prblm-descp{
+    margin-top: 1rem;
+    font-weight: 1000;
+  }
+  .prblm-descp textarea{
+    width: 100%;
+    border: 2px solid black;
+    
+  }
+  .reporter{
+    margin-top: 1rem;
+    font-weight: 1000;
+  }
+  .reporter input{
+    border: 2px solid black;
+  }
+  .prblm-submit{
+    margin-top: 1rem;
+    
+  }
+  .prblm-submit button{
+    background: black;
+    color: white;
+    height: 30px;
+    width: 110%;
+    border-radius: 10px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+  }
+  .cross-btn2{
+    background: white;
+    border: 0;
+    outline: 0;
+    margin-left: 90%;
+    cursor: pointer;
+  }
+  .cross-btn2 i{
+    color: red;
+    font-weight: 1000;
+    font-size: 30px;
+    margin-top: 0.3rem;
+    
+  }
+
+  .user-div{
+    background: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-left: 3rem;
+  }
+  .user-div h1{
+    font-size:20px;
+    font-weight: 100;
+    
+  }
+  .user-div i{
+    color: white;
+    height: 20px;
+    width: 30px;
+    
+    
+  }
+  .dashboard-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background: white;
+    margin-top: 5rem;
+    margin-left: 5rem;
+
+  }
+  .total{
+    background: black;
+    color: white;
+    border-radius: 10px;
+    width: 250px;
+    height: 150px;
+    margin-right: 5rem;
+    
+    box-shadow: 0 1px 3px rgba(63, 57, 57, 0.2);
+  }
+  .total h3{
+    text-align: center;
+    font-size: 40px;
+    margin-top: 1rem;
+  }
+  .total h2{
+    text-align: center;
+    font-family :'Courier New', Courier, monospace;
+    font-size: 60px;
+    margin-top: .001rem;
+  }

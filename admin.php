@@ -119,10 +119,53 @@
       </form>
     </div>
 
+    <div class="section">
+      <h2>Delete PC from a Lab</h2>
+      <form id="pcForm" method="POST" action="dashDb.php">
+        <select name="lab_id" required>
+          <option value="">Select Lab</option>
+          <option value="616">616</option>
+          <option value="610">610</option>
+          <!-- Labs should be populated from DB -->
+        </select>
+        <input type="text" placeholder="PC Number" name="pc_name" required>
+        <select name="status">
+          <option value="Solve">Solve</option>
+          <option value="Processing">Problematic</option>
+        </select>
+        
+        <button type="submit" name="deletepc">Delete PC</button>
+      </form>
+    </div>
+    <div class="section">
+      <h2>Update Status</h2>
+      <form id="pcForm" method="POST" action="dashDb.php">
+        <select name="lab_id" required>
+          <option value="">Select Lab</option>
+          <option value="616">616</option>
+          <option value="610">610</option>
+          <!-- Labs should be populated from DB -->
+        </select>
+        <input type="text" placeholder="PC Number" name="pc_name" >
+        
+        <button type="submit" name="update">Update</button>
+      </form>
+    </div>
+
     <!-- PC Display Section -->
     <div class="section">
-      <h2>PCs in Labs</h2>
-      <div class="pc-boxes" id="pcContainer">
+      <h2>Show Report</h2>
+      <form id="pcForm" method="POST" action="report.php" target="_blank">
+        <select name="lab_id" required>
+          <option value=""  disabled selected>Select Lab</option>
+          <option value="616">616</option>
+          <option value="610">610</option>
+          <!-- Labs should be populated from DB -->
+        </select>
+        
+        
+        <button type="submit" name="searchpc">Search</button>
+      </form>
         <!-- Dynamically added PC boxes will appear here -->
       </div>
     </div>

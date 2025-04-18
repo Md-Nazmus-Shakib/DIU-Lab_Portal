@@ -65,9 +65,9 @@
 
 
     <div class="form-box1" id="signup-popup">
-        <div class="cross-btn">
-            <button type="button" onclick="popup('signup-popup')" class="cross-btn"><i class="fa-regular fa-circle-xmark"></i></button>
-        </div>
+        
+            <button type="button" onclick="popup('signup-popup')" class="cross-btnn"><i class="fa-regular fa-circle-xmark"></i></button>
+        
         <h1 class="title">Sign Up</h1>
         <div class="underline"></div>
         <form method="POST" action="signin_signup.php" id="signupform">
@@ -100,7 +100,7 @@
             <h1 class="gsign">Or connect with</h1>
             <button type="button"><i class="fa-brands fa-google"></i></button>
         </div>
-    </div> <!--end formbox-->
+    </di> <!--end formbox-->
 
 
 

@@ -101,40 +101,33 @@ function popup(popup_name)
   }
 }
 
-function popup1(popup_name)
+function popup1()
 {
-  get_popup=document.getElementById(popup_name);
-  conte = document.getElementById("pc-popup1")
-  if(get_popup.style.display=="flex")
-  {
-    get_popup.style.display="none";
-    //conte.style.display="flex";
+  // get_popup=document.getElementById(popup_name);
+  // conte = document.getElementById("pc-popup1")
+  // if(get_popup.style.display=="flex")
+  // {
+  //   get_popup.style.display="none";
+  //   //conte.style.display="flex";
    
-  }
-  else
-  {
-    get_popup.style.display="flex";
-    
-    conte.style.display="none";
+  // }
+  // else{
+  //   get_popup.style.display="flex";
+  // }
+  const popup = document.getElementById('pc-popup');
+    if (popup) {
+      popup.style.display="none";
+    }
+}
+function popup2() {
+  const popup = document.getElementById('prblm-popup');
+  if (popup.style.display === "flex" ) {
+      popup.style.display = "none";
+  } else {
+      popup.style.display = "flex"; // or "block" depending on your CSS
   }
 }
 
-function popup2(popup_name)
-{
-  get_popup=document.getElementById(popup_name);
-  conte = document.getElementById("pc-popup")
-  if(get_popup.style.display=="flex")
-  {
-    get_popup.style.display="none";
-    //conte.style.display="flex";
-   
-  }
-  else
-  {
-    get_popup.style.display="flex";
-    
-    conte.style.display="none";
-  }
-}
+
 
 
