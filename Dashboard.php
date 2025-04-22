@@ -23,8 +23,8 @@ if (isset($_POST['showlab'])) {
 </head>
 
 <body>
-    <div class="nav">
-        <?php
+    <header>
+    <?php
         if (isset($_SESSION['signed in']) && $_SESSION['signed in'] == true) {
 
             echo "
@@ -32,6 +32,7 @@ if (isset($_POST['showlab'])) {
             
             <h1><i class='fa-regular fa-user'></i>$_SESSION[name]</h1>
         </div>
+         <h1>Welcome To DIU Lab Portal</h1>
        <div class='logout'>
        
         <button type='button' class='lbtn'><a href='logout.php'>Sign Out</a></button>
@@ -41,7 +42,9 @@ if (isset($_POST['showlab'])) {
             header("location:signup.php");
         }
         ?>
-    </div>
+    </header>
+        
+    
     <div class="dashboard-section">
         <div class="total">
         <h3>Total Lab</h3>
@@ -178,9 +181,10 @@ if (isset($_POST['showlab'])) {
                     <i class='fa-regular fa-circle-xmark'></i>
                 </button>
             </div>
-            <h1 class='hh'>Lab $lab_id</h1>";
-
+            <div class='hh'><h2 >Lab $lab_id</h2></div>";
+                $count = 0;
                 while ($row = mysqli_fetch_assoc($result)) {
+                    $count++;
                     echo "
             <div class='main-div'>
                 <div class='pc-detail'>
@@ -205,6 +209,9 @@ if (isset($_POST['showlab'])) {
                     </div>
                 </div>
             </div>";
+            if($count==1){
+                echo "<br>";
+            }
                 }
 
                 echo "

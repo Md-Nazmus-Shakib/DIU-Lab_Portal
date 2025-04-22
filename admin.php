@@ -1,10 +1,16 @@
+<?php
+require('connection.php');
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Dashboard - Lab PC Management</title>
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
     * {
       box-sizing: border-box;
@@ -57,7 +63,7 @@
       gap: 1rem;
     }
 
-    .pc-box {
+    /* .pc-box {
       background: #dceefb;
       border-radius: 8px;
       padding: 1rem;
@@ -69,7 +75,7 @@
 
     .pc-box p {
       margin: 0.5rem 0;
-    }
+    } */
 
     .delete-btn {
       position: absolute;
@@ -83,24 +89,136 @@
       height: 24px;
       cursor: pointer;
     }
+    .user-div1{
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .user-div{
+      width: 10%;
+      margin-left: 5px;
+    }
+    .user-div1 .logout .lbtn{ 
+      width: 130%;
+      height: 30px;
+      border-radius: 13px;
+      text-decoration: none;
+      background: white;
+      margin-top: 0.2rem;
+      font-size: 20px;
+      font-weight: 770;
+      border: 0;
+      outline: 0;
+    }
+    .lbtn a{
+      color: black;
+      text-decoration: none;
+    }
+    .dashboard-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background: transparent;
+    margin-top: 5rem;
+    margin-left: 5rem;
+
+  }
+  .total{
+    background: black;
+    color: white;
+    border-radius: 10px;
+    width: 250px;
+    height: 150px;
+    margin-right: 5rem;
+    
+    box-shadow: 0 1px 3px rgba(63, 57, 57, 0.2);
+  }
+  .total h3{
+    text-align: center;
+    font-size: 40px;
+    margin-top: 1rem;
+  }
+  .total h2{
+    text-align: center;
+    font-family :'Courier New', Courier, monospace;
+    font-size: 60px;
+    margin-top: .001rem;
+  }
   </style>
   </head>
 <body>
   <header>
-    <h1>Admin Dashboard - Lab PC Management</h1>
+   
+    <?php
+        if (isset($_SESSION['adsigned in']) && $_SESSION['adsigned in'] == true) {
+
+            echo "
+            <div class='user-div1'>
+            <div class='user-div'>
+            
+            <h1><i class='fa-regular fa-user'></i>$_SESSION[emp_id]</h1>
+        </div>
+         <h1>Admin Dashboard - Lab PC Management</h1>
+       <div class='logout'>
+       
+        <button type='button' class='lbtn'><a href='logout.php'>Sign Out</a></button>
+       </div>
+       </div>
+        ";
+        } else {
+          echo "
+          <script>
+          alert('Incorrect Password!:( Try again!');
+          </script>
+          ";
+            header("location:admin_login.php");
+        }
+        ?>
   </header>
 
-  <div class="container">
-    <!-- Add Lab Room Section -->
-    <!-- <div class="section">
-      <h2>Add New Lab Room</h2>
-      <form id="labForm">
-        <input type="text" placeholder="Lab Name" name="lab_name" required>
-        <button type="submit">Add Lab</button>
-      </form>
-    </div> -->
+  <div class="dashboard-section">
+        <div class="total">
+        <h3>Total Lab</h3>
+        <h2>2+</h2>
+        </div>
+        <div class="total">
+        <h3>Total PC</h3>
+            <?php
+           $labs = ['616', '610']; // Add all lab table names here
+           $total = 0;
+           foreach ($labs as $lab_id) {
+               $sql = "SELECT COUNT(*) AS total_pcs FROM `$lab_id`";
+               $result = mysqli_query($con, $sql);
+               if ($result) {
+                   $row = mysqli_fetch_assoc($result);
+                   $total += $row['total_pcs'];
+                   
+               }
+           }
+           echo "<h2> $total</h2>";
+             ?>
+        </div>
+        <div class="total">
+            <h3 style="font-size : 38px;margin-top : 1.2rem">Working PC</h3>
+            <?php
+            $sql2 = "SELECT COUNT(DISTINCT CONCAT(lab_id, '-', pc_name)) AS unique_pc_count FROM problems";
+            $result = mysqli_query($con, $sql2);
+            $row = mysqli_fetch_assoc($result);
+            $working_pc = $total - $row['unique_pc_count'];
+            echo "<h2> $working_pc</h2>";
+            ?>
+        </div>
+        <div class="total">
+        <h3 style="font-size : 30px; margin-top: 1.4rem;">Problemetic PC</h3>
+        <?php
+        echo "<h2 style='margin-top : 0.4rem; '>$row[unique_pc_count]</h2>";
+         ?>
+        </div>
+    </div>
 
-    <!-- Add PC Section -->
+  <div class="container">
+    
     <div class="section">
       <h2>Add New PC to a Lab</h2>
       <form id="pcForm" method="POST" action="dashDb.php">
@@ -170,28 +288,6 @@
       </div>
     </div>
   </div>
-  <!-- <script>
-    // Example of adding dummy PC data dynamically
-    document.getElementById('pcForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const pcName = e.target.pc_name.value;
-      const pcStatus = e.target.pc_status.value;
-      const pcContainer = document.getElementById('pcContainer');
 
-      const div = document.createElement('div');
-      div.className = 'pc-box';
-      div.innerHTML = `
-        <button class="delete-btn">&times;</button>
-        <i class="fa-solid fa-desktop fa-2x"></i>
-        <p><strong>${pcName}</strong></p>
-        <p>Status: ${pcStatus}</p>
-      `;
-
-      div.querySelector('.delete-btn').addEventListener('click', () => div.remove());
-      pcContainer.appendChild(div);
-
-      e.target.reset();
-    });
-  </script> -->
   </body>
   </html>

@@ -14,11 +14,11 @@
 </head>
 
 <body>
-    <div class="nav">
-        <p>this is nav</p>
-<!--         
-        <button type="btn" >Login</button> -->
-    </div>
+    <header class="main-head">
+        
+        <h1>Welcome To DIU Lab Portal</h1>
+        
+    </header>
     <div class="container" id="container">
         <div class="form-box">  
             <h1 class="title">Sign In</h1>

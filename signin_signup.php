@@ -1,20 +1,74 @@
 <?php
 require('connection.php');
 session_start();
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+function sendEmail($email,$v_code) {
+    require 'phpmailer/PHPMailer.php';
+    require 'phpmailer/SMTP.php';
+    require 'phpmailer/Exception.php';
+
+    $mail = new PHPMailer(true);
+
+    try {
+        //Server settings
+        // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+        $mail->Username   = 'khan35-998@diu.edu.bd';                     //SMTP username
+        $mail->Password   = 'shakib23451';                               //SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+        $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+    
+        //Recipients
+        $mail->setFrom('khan35-998@diu.edu.bd', 'DIU Lab Protal');
+
+        $mail->addAddress($email);     //Add a recipient
+        // $mail->addAddress('ellen@example.com');               //Name is optional
+        // $mail->addReplyTo('info@example.com', 'Information');
+        // $mail->addCC('cc@example.com');
+        // $mail->addBCC('bcc@example.com');
+    
+        //Attachments
+        // $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+        // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+    
+        //Content
+        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->Subject = 'Email Verification';
+        $mail->Body    = "Thanks for registration!</b>Click the link below to verify the email address.
+        <br><button style ='background : white; color : black;'><a href='http://localhost/DIU-Lab_Portal/verify.php?email=$email&v_code=$v_code'>Verify</a></button>";
+        
+        
+        //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+    
+        $mail->send();
+       return true;
+    } catch (Exception $e) {
+        return false;
+    }
+
+}
 // require('signup.php');
 // for login
     if(isset($_POST['signin']) )
     {
         $query = "SELECT * FROM register_table WHERE email = '$_POST[email]'";
         $result = mysqli_query($con, $query);
+        
 
         if($result)
         {
             $email = $_POST['email'];
             $password = $_POST['password'];
-            if(mysqli_num_rows($result) == 1)
+            $result_fetch = mysqli_fetch_assoc($result);
+            if(mysqli_num_rows($result) == 1 && $result_fetch['is_verified']==1)
             {
-                $result_fetch = mysqli_fetch_assoc($result);
+                
                 if(password_verify($_POST['password'],$result_fetch['password']))
                 {
                     // echo"Hi,dhuke gechi.";
@@ -30,6 +84,14 @@ session_start();
                 </script>
                 ";
                 }
+            }
+            else if(mysqli_num_rows($result) == 1 && $result_fetch['is_verified']==0)
+            {
+                echo"   <script>
+                alert( ' Your email is not verified!');
+                window.location.href = 'signup.php';
+                </script>
+                ";
             }
             else
             {
@@ -86,19 +148,20 @@ if (isset($_POST['signup'])) {
             }
         } else {
             $password1 = password_hash($_POST['password'],PASSWORD_BCRYPT);
-            $query = "INSERT INTO `register_table`(`name`, `email`, `password`) VALUES ('$_POST[name]','$_POST[email]','$password1')";
-            if (mysqli_query($con, $query)) {
+            $v_code = bin2hex(random_bytes(16));
+            $query = "INSERT INTO `register_table`(`name`, `email`, `password`,`verification_code`, `is_verified`) VALUES ('$_POST[name]','$_POST[email]','$password1','$v_code','0')";
+            if (mysqli_query($con, $query) && sendEmail($_POST['email'],$v_code)) {
                 echo " <script>
                  
                  window.location.href = 'signup.php';
-                 alert('Welcome!  $name  regestration succefull. ');
+                 alert('Welcome!  $name.You are regesterd succefully. ');
                   
                 
                  </script>";
             } else {
                 echo "
                     <script>
-                    alert('Cannot Run Query');
+                    alert('Server Down');
                     window.location.href = 'signup.php';
                     </script>
                     ";
