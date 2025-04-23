@@ -122,13 +122,16 @@ if (isset($_POST['update'])) {
             $pc_name = $_POST['pc_name'];
              if(empty($pc_name))
              {
+                $delete_query = "DELETE FROM `problems` WHERE lab_id = '$lab_id'";
                 $update_query = "UPDATE `$lab_id` SET `status`='working'";
+                // $delete_query = "DELETE FROM `problems` WHERE lab_id = '$lab_id'";
              }
              else{
                 $update_query = "UPDATE `$lab_id` SET `status`='working' WHERE pc_name = '$_POST[pc_name]'";
+                $delete_query = "DELETE FROM problems WHERE lab_id='$_POST[lab_id]' AND pc_name = '$_POST[pc_name]'";
              }
             
-            if (mysqli_query($con, $update_query)) {
+            if (mysqli_query($con, $update_query) && mysqli_query($con, $delete_query)) {
                 echo " <script>
          
          window.location.href = 'admin.php';

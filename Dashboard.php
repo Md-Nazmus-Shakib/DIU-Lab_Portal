@@ -64,23 +64,37 @@ if (isset($_POST['showlab'])) {
                    
                }
            }
-           echo "<h2> $total</h2>";
+           $total_pc = $total;
+           echo "<h2> $total_pc</h2>";
              ?>
         </div>
         <div class="total">
             <h3 style="font-size : 38px;margin-top : 1.2rem">Working PC</h3>
             <?php
-            $sql2 = "SELECT COUNT(DISTINCT CONCAT(lab_id, '-', pc_name)) AS unique_pc_count FROM problems";
-            $result = mysqli_query($con, $sql2);
-            $row = mysqli_fetch_assoc($result);
-            $working_pc = $total - $row['unique_pc_count'];
+            // $sql2 = "SELECT COUNT(DISTINCT CONCAT(lab_id, '-', pc_name)) AS unique_pc_count FROM problems";
+            // $result = mysqli_query($con, $sql2);
+            // $row = mysqli_fetch_assoc($result);
+
+            $labs = ['616', '610']; // Add all lab table names here
+            $total = 0;
+            foreach ($labs as $lab_id) {
+                $sql = "SELECT COUNT(*) AS working_pc FROM `$lab_id` WHERE `status`='working' ";
+                $result = mysqli_query($con, $sql);
+                if ($result) {
+                    $row = mysqli_fetch_assoc($result);
+                    $total += $row['working_pc'];
+                    
+                }
+            }
+            $working_pc = $total ;
             echo "<h2> $working_pc</h2>";
             ?>
         </div>
         <div class="total">
         <h3 style="font-size : 30px; margin-top: 1.4rem;">Problemetic PC</h3>
         <?php
-        echo "<h2 style='margin-top : 0.4rem; '>$row[unique_pc_count]</h2>";
+        $problem_pc = $total_pc-$working_pc;
+        echo "<h2 style='margin-top : 0.4rem; '>$problem_pc</h2> ";
          ?>
         </div>
     </div>
@@ -155,6 +169,9 @@ if (isset($_POST['showlab'])) {
             </form>
         </div>
     </div>
+
+
+
 
 
     <?php 
@@ -236,8 +253,21 @@ if (isset($_POST['showlab'])) {
 
 
 
-
-
+<footer style="background-color: transparent; color: black; text-align: center; padding: 20px 10px; font-family: Arial, sans-serif;margin-top : 130px;">
+  <div style="max-width: 1200px; margin: auto;">
+    <p style="margin: 0; font-size: 16px;">&copy; 2025 DIU Lab Portal. All rights reserved.</p>
+    <div style="margin-top: 10px;">
+      <a href="#1" style="color: black; margin: 0 10px; text-decoration: none;">Home</a>
+      <a href="#" style="color: black; margin: 0 10px; text-decoration: none;">About</a>
+      <a href="#" style="color: black; margin: 0 10px; text-decoration: none;">Contact</a>
+    </div>
+    <div style="margin-top: 10px; font-size: 18px;">
+      <a href="#" style="color: black; margin: 0 8px;"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" style="color: black; margin: 0 8px;"><i class="fab fa-twitter"></i></a>
+      <a href="#" style="color: black; margin: 0 8px;"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+</footer>
 
 
 

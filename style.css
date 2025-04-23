@@ -34,9 +34,11 @@ i {
 
 
 .form-box {
-    width: 90%;
-    max-width: 450px;
-    min-width: 350px;
+  /* position: fixed; */
+    width: 30%;
+    height: 90vh;
+    /* max-width: 450px;
+    min-width: 350px; */
     background: black;
     padding: 55px;
     display: flex;
@@ -45,7 +47,8 @@ i {
     border-radius: 10px;
     margin-top: 1%;
     margin-bottom: 3%;
-    margin-right: 0.5%;
+    margin-right: 35%;
+    margin-left: 20%;
     color: white;
 
 }
@@ -53,7 +56,7 @@ i {
         position: fixed;
         top: 0;
         left: 0;
-        height: 85vh;
+        height: 83vh;
         width: 90%;
         max-width: 450px;
         min-width: 350px;
@@ -64,7 +67,7 @@ i {
         flex-direction: column;
         text-align: center;
         border-radius: 10px;
-        margin-top: 5%;
+        margin-top: 6%;
         margin-bottom: 3%;
         margin-right: 3%;
         display: none;
@@ -72,13 +75,40 @@ i {
     
     
 }
+.form-box2{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 75vh;
+  width: 90%;
+  max-width: 450px;
+  min-width: 350px;
+  background: black;
+  color: white;
+  padding: 55px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  border-radius: 10px;
+  margin-top: 6%;
+  margin-bottom: 3%;
+  margin-right: 3%;
+  display: none;
+  margin-left: 550px;
+
+
+}
 
 
 .form-box h1 {
-    margin-top: 50px;
+    margin-top: 20px;
     font-size: 30px;
 }
 .form-box1 h1 {
+    margin-top: 15px;
+    font-size: 30px;
+}
+.form-box2 h1 {
     margin-top: 15px;
     font-size: 30px;
 }
@@ -97,12 +127,24 @@ i {
     margin: 10px auto 50px auto;
     border-radius: 13px;
 }
+.form-box2 .underline {
+    width: 30px;
+    height: 4px;
+    background: white;
+    margin: 10px auto 50px auto;
+    border-radius: 13px;
+}
 
 .form-box form{
     display: flex;
     flex-direction: column;
+
 }
 .form-box1 form{
+    display: flex;
+    flex-direction: column;
+}
+.form-box2 form{
     display: flex;
     flex-direction: column;
 }
@@ -119,6 +161,18 @@ i {
     overflow: hidden;
 }
 .form-box1 .input-field {
+    width: 100%;
+    background: #eaeaea;
+    margin: 15px 0;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+
+    max-height: 60px;
+    transition: max-height 0.4s;
+    overflow: hidden;
+}
+.form-box2 .input-field {
     width: 100%;
     background: #eaeaea;
     margin: 15px 0;
@@ -173,6 +227,7 @@ form p {
 
 }
 
+
 .btn-field .signInbtn {
     width: 50%;
     display: flex;
@@ -183,17 +238,15 @@ form p {
     border-radius: 12px;
     margin-left: 85px;
     margin-bottom: 30px;
-    font-size: 20px;
+    font-size: 17px;
     font-weight: 1000;
 
 
 }
 
-.btn-field a {
-    text-decoration: none;
-    font-weight: 900;
-    color:white;
-}
+
+
+
 
 /*  */
 
@@ -222,14 +275,14 @@ form p {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 12px;
+    border-radius: 13px;
     border: 0;
     outline: 0;
     height: 30px;
     margin-top: 20px;
     margin-left: 85px;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 1000;
 
 
@@ -280,6 +333,7 @@ form p {
 
 .input-group {
     height: 130px;
+    margin-top: 0.5rem;
 
 
 }
@@ -320,6 +374,9 @@ form p {
 }
 .form-box1 .title{
     margin-top: .2rem;
+}
+.form-box2 .title{
+  margin-top: .2rem;
 }
 .labroom{
     width: 100%;

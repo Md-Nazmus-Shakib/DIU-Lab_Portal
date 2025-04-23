@@ -176,4 +176,58 @@ if (isset($_POST['signup'])) {
             ";
     }
 }
+
+if (isset($_POST['forgot'])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    if (strlen($password) < 6 || strlen($password) > 8) {
+        echo "<script>alert('Password must be 6-8 characters.'); window.history.back();</script>";
+        exit;
+    }
+    
+    $user_exist_query = "SELECT * FROM register_table WHERE email = '$_POST[email]'";
+    $result = mysqli_query($con, $user_exist_query);
+
+    if ($result) {
+        if (mysqli_num_rows($result) > 0) {
+            $result_fetch = mysqli_fetch_assoc($result);
+            if ($result_fetch['email'] == $_POST['email']) {
+                $password1 = password_hash($_POST['password'],PASSWORD_BCRYPT);
+            
+            $query = "UPDATE `register_table` SET `password`='$password1' WHERE  email =' $_POST[email]'";
+            if (mysqli_query($con, $query) ) {
+                echo " <script>
+                 
+                 window.location.href = 'signup.php';
+                 alert('Congratulation $name! Welcome back. ');
+                  
+                
+                 </script>";
+            } else {
+                echo "
+                    <script>
+                    alert('Server Down');
+                    window.location.href = 'signup.php';
+                    </script>
+                    ";
+            }
+            }
+        } else {
+            echo "
+                    <script>
+                    alert('$email is not registerd! Try again.');
+                    window.location.href = 'signup.php';
+                    </script>
+                    ";
+        }
+    } else {
+        echo "
+            <script>
+            alert('Cannot Run Query');
+            window.location.href = 'signup.php';
+            </script>
+            ";
+    }
+}
 ?>

@@ -159,10 +159,10 @@ session_start();
             
             <h1><i class='fa-regular fa-user'></i>$_SESSION[emp_id]</h1>
         </div>
-         <h1>Admin Dashboard - Lab PC Management</h1>
+         <h1>Admin Dashboard - DIU Lab Portal</h1>
        <div class='logout'>
        
-        <button type='button' class='lbtn'><a href='logout.php'>Sign Out</a></button>
+        <button type='button' class='lbtn'><a href='admin_logout.php'>Sign Out</a></button>
        </div>
        </div>
         ";
@@ -196,23 +196,33 @@ session_start();
                    
                }
            }
-           echo "<h2> $total</h2>";
+           $total_pc=$total;
+           echo "<h2> $total_pc</h2>";
              ?>
         </div>
         <div class="total">
             <h3 style="font-size : 38px;margin-top : 1.2rem">Working PC</h3>
             <?php
-            $sql2 = "SELECT COUNT(DISTINCT CONCAT(lab_id, '-', pc_name)) AS unique_pc_count FROM problems";
-            $result = mysqli_query($con, $sql2);
-            $row = mysqli_fetch_assoc($result);
-            $working_pc = $total - $row['unique_pc_count'];
-            echo "<h2> $working_pc</h2>";
+           $labs = ['616', '610']; // Add all lab table names here
+           $total = 0;
+           foreach ($labs as $lab_id) {
+               $sql = "SELECT COUNT(*) AS working_pc FROM `$lab_id` WHERE `status`='working' ";
+               $result = mysqli_query($con, $sql);
+               if ($result) {
+                   $row = mysqli_fetch_assoc($result);
+                   $total += $row['working_pc'];
+                   
+               }
+           }
+           $working_pc = $total ;
+           echo "<h2> $working_pc</h2>";
             ?>
         </div>
         <div class="total">
         <h3 style="font-size : 30px; margin-top: 1.4rem;">Problemetic PC</h3>
         <?php
-        echo "<h2 style='margin-top : 0.4rem; '>$row[unique_pc_count]</h2>";
+        $problem_pc = $total_pc-$working_pc;
+        echo "<h2 style='margin-top : 0.4rem; '>$problem_pc</h2> ";
          ?>
         </div>
     </div>
