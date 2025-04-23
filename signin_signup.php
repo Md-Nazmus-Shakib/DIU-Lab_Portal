@@ -19,8 +19,8 @@ function sendEmail($email,$v_code) {
         $mail->isSMTP();                                            //Send using SMTP
         $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'khan35-998@diu.edu.bd';                     //SMTP username
-        $mail->Password   = 'shakib23451';                               //SMTP password
+        $mail->Username   = '';                     //SMTP username
+        $mail->Password   = '';                               //SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
         $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
     
@@ -176,6 +176,7 @@ if (isset($_POST['signup'])) {
             ";
     }
 }
+<<<<<<< HEAD
 
 if (isset($_POST['forgot'])) {
     $name = $_POST['name'];
@@ -231,3 +232,6 @@ if (isset($_POST['forgot'])) {
     }
 }
 ?>
+=======
+?>
+>>>>>>> 3730c2a902b5eadaaa471cd6cb149cb1d594042b
