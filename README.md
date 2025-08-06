@@ -143,7 +143,6 @@ We welcome community contributions! To contribute:
 
 ## 📅 Maintainers
 - Md. Nazmus Shakib Khan - Lead Developer
-- Ziaul Rashid Ilham - UI/UX Engineer and Lead Tester
 - DIU Software Engineering Team
 
 ---
