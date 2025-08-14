@@ -107,6 +107,13 @@ cp .env.example .env
 ```
 
 ---
+<img width="2000" height="1999" alt="image" src="https://github.com/user-attachments/assets/a34189c0-85b7-4bef-a8de-0b392436b997" />
+<img width="2000" height="1999" alt="image" src="https://github.com/user-attachments/assets/173df532-a60b-43d1-b16b-5aa74002463f" />
+<img width="2000" height="1999" alt="image" src="https://github.com/user-attachments/assets/2c1fbb5e-b904-4a40-a497-120ffa378cb3" />
+
+
+
+
 
 ## 🚧 Future Plans
 
